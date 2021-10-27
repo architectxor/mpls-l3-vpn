@@ -13,10 +13,14 @@ int Gig0/3
 description to CE-B-2
 ip vrf forwarding VRF-B
 ip address 172.16.20.129 255.255.255.192
+no sh
 exit
 
 int Gig0/4
 description to CE-A-3
 ip vrf forwarding VRF-A
 ip address 192.168.100.129 255.255.255.192
+no sh
 exit
+
+[[MPLS/mpls-l3-vpn/Checklist]]

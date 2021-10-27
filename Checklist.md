@@ -1,12 +1,7 @@
 # Checklist
 
-## Configure addresses on all routers
-- [x] [[MPLS/MPLS-lab4/PE-1/1PE-interfaces| on PE-1]]
-- [x] [[MPLS/MPLS-lab4/PE-2/2PE-interfaces| on PE-2]]
-- [x] [[MPLS/MPLS-lab4/PE-3/3PE-interfaces| on PE-3]]
-- [x] [[MPLS/MPLS-lab4/PE-4/4PE-interfaces| on PE-4]]
-- [x] [[MPLS/MPLS-lab4/PE-5/5PE-interfaces| on PE-5]]
-- [x] [[MPLS/MPLS-lab4/P/P-interfaces| on P]]
+## First of all configure CE Equipment of customers A and B
+### Configure and up interfaces
 - [x] [[CE-A1-interfaces| on CE-A-1]]
 - [x] [[CE-A2-interfaces| on CE-A-2]]
 - [x] [[CE-A3-interfaces| on CE-A-3]]
@@ -14,16 +9,8 @@
 - [x] [[CE-B1-interfaces| on CE-B-1]]
 - [x] [[CE-B2-interfaces| on CE-B-2]]
 - [x] [[CE-B3-interfaces| on CE-B-3]]
-- [x] Screenshoot all this
 
-
-## (Not Sure) Configure IGP on all routers
-- [x] [[MPLS/MPLS-lab4/PE-1/1PE-ospf| OSPF on PE-1]]
-- [x] [[MPLS/MPLS-lab4/PE-2/2PE-ospf| OSPF on PE-2]]
-- [x] [[MPLS/MPLS-lab4/PE-3/3PE-ospf| OSPF on PE-3]]
-- [x] [[MPLS/MPLS-lab4/PE-4/4PE-ospf| OSPF on PE-4]]
-- [x] [[MPLS/MPLS-lab4/PE-5/5PE-ospf| OSPF on PE-5]]
-- [x] [[MPLS/MPLS-lab4/P/P-ospf| OSPF on P]]
+### Configure some routing mechanism
 - [x] [[CE-A1-ospf| OSPF on A1]]
 - [x] [[CE-A2-ospf| OSPF on A2]]
 - [x] [[CE-A3-ospf| OSPF on A3]]
@@ -31,6 +18,41 @@
 - [x] [[CE-B1-ospf| OSPF on B1]]
 - [x] [[CE-B2-ospf| OSPF on B2]]
 - [x] [[CE-B3-ospf| OSPF on B3]]
+
+
+#### That's all for CE's you don't need to touch it after this step at all
+
+## Another pretty straightforward configuration is P router
+- [x] [[MPLS/mpls-l3-vpn/P/P-interfaces| Configure interfaces on the Provider Core router]]
+- [x] [[MPLS/mpls-l3-vpn/P/P-ospf | Configure routing on it]]
+- [x] [[MPLS/mpls-l3-vpn/P/P-cef-mpls]]
+
+
+## Now configure interfaces of PE
+- [x] [[1PE-interfaces| on PE-1]]
+- [x] [[2PE-interfaces| on PE-2]]
+- [x] [[3PE-interfaces| on PE-3]]
+- [x] [[4PE-interfaces| on PE-4]]
+- [x] [[5PE-interfaces| on PE-5]]
+- [ ] Screenshoot all this
+
+
+## Configure Link-state IGP on PE
+- [x] [[1PE-ospf| OSPF on PE-1]]
+- [x] [[2PE-ospf| OSPF on PE-2]]
+- [x] [[3PE-ospf| OSPF on PE-3]]
+- [x] [[4PE-ospf| OSPF on PE-4]]
+- [x] [[5PE-ospf| OSPF on PE-5]]
+
+
+## Now enable LEP globally and on each interface for each PE in MPLS-domain
+### It's LDP in my case
+- [x] [[1PE-ldp-enable| On PE-1]]
+- [x] [[2PE-ldp-enable| On PE-2]]
+- [x] [[3PE-ldp-enable| On PE-3]]
+- [x] [[4PE-ldp-enable| On PE-4]]
+- [x] [[5PE-ldp-enable| On PE-5]]
+
 
 
 ## Create VRF on all PE LSRs
@@ -84,42 +106,17 @@ show ip route vrf VRF-B
 
 
 ## Try-to-reach [from PE-2]
-- [ ] `traceroute vrf VRF-A 192.168.100.1`
-- [ ] `traceroute vrf VRF-A 192.168.100.129`
-- [ ] `traceroute vrf VRF-A 192.168.100.193`
-- [ ] `traceroute vrf VRF-B 172.16.20.129`
-- [ ] `traceroute vrf VRF-B 172.16.20.193`
+- [x] `traceroute vrf VRF-A 192.168.100.1`
+- [x] `traceroute vrf VRF-A 192.168.100.129`
+- [x] `traceroute vrf VRF-A 192.168.100.193`
+- [x] `traceroute vrf VRF-B 172.16.20.129`
+- [x] `traceroute vrf VRF-B 172.16.20.193`
 
 
 ## Check out new labels on PE-2
-- [ ] Run `show mpls forwarding-table vrf VRF-B`
+- [x] Run `show mpls forwarding-table vrf VRF-B`
 
 
 ## Check out that there's `nolabel` on PE-5
-- [ ] Run `show bgp vpnv4 unicast vrf VRF-B labels`
+- [x] Run `show bgp vpnv4 unicast vrf VRF-B labels`
 
-
-
-
-## Troubleshoot traceroute
-- [ ] Check PE-1 vrf routing tables
-	- [x] 192.168.100.0 directly connected
-	- [x] 192.168.100.64 via 2.2.2.2
-	- [x] 192.168.100.128 via 3.3.3.3
-	- [x] 192.168.100.192 via 4.4.4.4
-	- [ ] 172.16.20.0 via 2.2.2.2
-	- [ ] 172.16.20.128 via 3.3.3.3
-	- [ ] 172.16.20.192 via 5.5.5.5
-	- [ ] VRF B doesn't exits, because it's P-router VPN Customer B traffic
-- [ ] Check PE-2 vrf routing tables
-- [ ] Check PE-3 vrf routing tables
-- [ ] Check PE-4 vrf routing tables
-- [ ] Check PE-5 vrf routing tables
-
-
-## Fixing Routers
-- [ ] Remove VRF-B from PE-4 `no ip vrf VRF-B`
-- [ ] Remove VRF-A from PE-5 `no ip vrf VRF-A`
-
-
-## Try to define static routes between CE<->PE 

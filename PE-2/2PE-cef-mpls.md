@@ -20,3 +20,5 @@ int Gig0/2
 mpls ip
 ex
 end
+
+[[MPLS/mpls-l3-vpn/Checklist]]

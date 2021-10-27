@@ -1,3 +1,4 @@
+
 ! CEF technology for packet processing
 ip cef
 
@@ -7,26 +8,24 @@ mpls ip
 ! Setting LSR ID
 mpls ldp router-id Loopback 0 force
 
-! Enabling MPLS and LDP on interfaces
 int Gig0/0
 mpls ip
+no sh
 ex
 
 int Gig0/1
 mpls ip
+no sh
 ex
 
 int Gig0/2
 mpls ip
-ex
-
-int Gig0/3
-mpls ip
+no sh
 ex
 
 int Gig0/4
 mpls ip
+no sh
 ex
-
 
 [[MPLS/mpls-l3-vpn/Checklist]]

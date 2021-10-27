@@ -10,6 +10,7 @@ ex
 
 int Gig0/0
 description to PE-1
+ip add 10.1.6.6 255.255.255.0
 no sh
 ex
 
@@ -37,3 +38,4 @@ ip add 10.5.6.6 255.255.255.0
 no sh
 ex
 
+[[MPLS/mpls-l3-vpn/Checklist]]

@@ -7,5 +7,7 @@ int Gig0/4
 description to CE-A-1
 ip vrf forwarding VRF-A
 ip address 192.168.100.1 255.255.255.192
+no sh
 exit
 
+[[MPLS/mpls-l3-vpn/Checklist]]

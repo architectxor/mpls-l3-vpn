@@ -16,3 +16,5 @@ ex
 int Gig0/2
 ip ospf cost 8
 ex
+
+[[MPLS/mpls-l3-vpn/Checklist]]

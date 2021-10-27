@@ -4,3 +4,6 @@ exit
 
 address-family ipv4 vrf VRF-B
 redistribute connected
+exit
+
+[[MPLS/mpls-l3-vpn/Checklist]]
